@@ -1,5 +1,8 @@
 package com.fag.lucasmartins.arquitetura_software.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.fag.lucasmartins.arquitetura_software.dto.ProdutoDTO;
 
 @RestController
 @RequestMapping("/produtos")
@@ -20,11 +22,11 @@ public class ProdutoController {
     private JdbcTemplate jdbcTemplate;
 
     @PostMapping
-    public ResponseEntity<Object> cadastrarProduto(@RequestBody Map<String, Object> payload) {
+    public ResponseEntity<Object> cadastrarProduto(@RequestBody ProdutoDTO payload) {
         try {
-            String nome = (String) payload.get("nome");
-            Integer estoque = (Integer) payload.get("estoque");
-            double preco = (double) payload.get("preco");
+            String nome = payload.getNome();
+            Integer estoque = payload.getEstoque();
+            double preco = payload.getPreco();
 
             if (nome != null && nome.toLowerCase().contains("premium")) {
                 if (preco < 100.0) {
