@@ -1,21 +1,22 @@
-package com.fag.lucasmartins.arquitetura_software.dto;
+package com.fag.lucasmartins.arquitetura_software.model.bo;
 
-public class ProdutoDTO {
+public class ProdutoBO {
 
     private Long id;
     private String nome;
     private Integer estoque;
     private double preco;
-
-    public ProdutoDTO() {
+    
+    public ProdutoBO() {
     }
 
-    public ProdutoDTO(String nome, Integer estoque, double preco) {
+    public ProdutoBO(Long id, String nome, Integer estoque, double preco) {
+        this.id = id;
         this.nome = nome;
         this.estoque = estoque;
         this.preco = preco;
     }
-    
+
     public Long getId() {
         return id;
     }

@@ -1,21 +1,28 @@
-package com.fag.lucasmartins.arquitetura_software.dto;
+package com.fag.lucasmartins.arquitetura_software.model.repository.entity;
 
-public class ProdutoDTO {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "tb_produtos")
+public class ProdutoEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private Integer estoque;
     private double preco;
 
-    public ProdutoDTO() {
+    public ProdutoEntity() {
     }
 
-    public ProdutoDTO(String nome, Integer estoque, double preco) {
+    public ProdutoEntity(Long id, String nome, Integer estoque, double preco) {
         this.nome = nome;
         this.estoque = estoque;
         this.preco = preco;
     }
-    
+
     public Long getId() {
         return id;
     }
