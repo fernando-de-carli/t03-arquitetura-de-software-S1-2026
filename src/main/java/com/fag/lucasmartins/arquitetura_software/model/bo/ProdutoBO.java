@@ -6,6 +6,20 @@ public class ProdutoBO {
     private String nome;
     private Integer estoque;
     private double preco;
+
+    public void validarRegras(){
+        if(nome != null && nome.toLowerCase().contains("premium")){
+            if(preco < 100.0){
+                throw new RuntimeException("Erro: o produto premium não podem custar menos de R$100,00.!");
+            }
+        }
+    }
+    
+    public void aplicarDescontoAtacado(){
+        if(estoque != null && estoque >=50){
+            this.preco = this.preco * 0.90;
+        }
+    }
     
     public ProdutoBO() {
     }
